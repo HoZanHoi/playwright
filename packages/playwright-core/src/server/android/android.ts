@@ -259,7 +259,7 @@ export class AndroidDevice extends SdkObject {
     this.emit(AndroidDevice.Events.Close);
   }
 
-  async launchBrowser(pkg: string = 'com.android.chrome', options: channels.AndroidDeviceLaunchBrowserParams): Promise<BrowserContext> {
+  async launchBrowser(pkg: string = 'com.brave.browser', options: channels.AndroidDeviceLaunchBrowserParams): Promise<BrowserContext> {
     debug('pw:android')('Force-stopping', pkg);
     await this._backend.runCommand(`shell:am force-stop ${pkg}`);
     const socketName = isUnderTest() ? 'webview_devtools_remote_playwright_test' : ('playwright_' + createGuid() + '_devtools_remote');
